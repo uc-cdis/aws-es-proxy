@@ -11,10 +11,14 @@ LABEL name="aws-es-proxy" \
 
 RUN apk --no-cache add ca-certificates
 WORKDIR /home/
+
+FROM scratch
+USER nobody
 COPY --from=0 /go/src/github.com/abutaha/aws-es-proxy/aws-es-proxy /usr/local/bin/
 
 ENV PORT_NUM 9200
 EXPOSE ${PORT_NUM}
+
 
 ENTRYPOINT ["aws-es-proxy"] 
 CMD ["-h"]
