@@ -23,5 +23,5 @@ ENV PORT_NUM 9200
 EXPOSE ${PORT_NUM}
 
 USER nobody
-ENTRYPOINT ["aws-es-proxy"] 
-CMD ["-timeout=180", "-endpoint=\"https://$ES_ENDPOINT\"", "-verbose", "-listen=\":9200\""]
+ENTRYPOINT ["/aws-es-proxy"] 
+CMD ["-timeout", "180", "-endpoint", "https://$ES_ENDPOINT", "-verbose", "-listen", ":9200"]
