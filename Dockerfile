@@ -4,6 +4,7 @@ WORKDIR /go/src/github.com/abutaha/aws-es-proxy
 COPY . .
 
 RUN CGO_ENABLED=0 GOOS=linux go build -o aws-es-proxy
+RUN echo "nobody:x:65534:65534:Nobody:/:" > /etc_passwd
 
 FROM alpine:3.17
 LABEL name="aws-es-proxy" \
@@ -11,7 +12,6 @@ LABEL name="aws-es-proxy" \
 
 RUN apk --no-cache add ca-certificates
 WORKDIR /home/
-RUN echo "nobody:x:65534:65534:Nobody:/:" > /etc_passwd
 
 
 FROM scratch
