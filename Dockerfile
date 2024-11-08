@@ -24,4 +24,4 @@ EXPOSE ${PORT_NUM}
 
 USER nobody
 ENTRYPOINT ["/aws-es-proxy"] 
-CMD ["-timeout", "180", "-endpoint", "https://$ES_ENDPOINT", "-verbose", "-listen", ":9200"]
+CMD ["-timeout", "180", "-verbose", "-listen", ":9200"]
