@@ -17,11 +17,11 @@ WORKDIR /home/
 FROM scratch
 
 COPY --from=builder /etc_passwd /etc/passwd
-COPY --from=builder /go/src/github.com/abutaha/aws-es-proxy/aws-es-proxy /usr/local/bin/
+COPY --from=builder /go/src/github.com/abutaha/aws-es-proxy/aws-es-proxy /aws-es-proxy
 
 ENV PORT_NUM 9200
 EXPOSE ${PORT_NUM}
 
 USER nobody
 ENTRYPOINT ["aws-es-proxy"] 
-CMD ["-h"]
+CMD ["-timeout=180", "-endpoint=\"https://$ES_ENDPOINT\"", "-verbose", "-listen=\":9200\""]
