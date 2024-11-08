@@ -1,4 +1,4 @@
-FROM golang:1.20-alpine
+FROM golang:1.20-alpine AS builder
 
 WORKDIR /go/src/github.com/abutaha/aws-es-proxy
 COPY . .
@@ -15,8 +15,8 @@ RUN echo "nobody:x:65534:65534:Nobody:/:" > /etc_passwd
 
 
 FROM scratch
-COPY --from=0 /go/src/github.com/abutaha/aws-es-proxy/aws-es-proxy /usr/local/bin/
-COPY --from=0 /etc_passwd /etc/passwd
+COPY --from=builder /go/src/github.com/abutaha/aws-es-proxy/aws-es-proxy /usr/local/bin/
+COPY --from=builder /etc_passwd /etc/passwd
 
 ENV PORT_NUM 9200
 EXPOSE ${PORT_NUM}
