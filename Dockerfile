@@ -14,9 +14,9 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /home/
 
 
-FROM scratch
+FROM gcr.io/distroless/static
 
-ADD bash
+COPY --from=busybox:1.35.0-uclibc /bin/sh /bin/sh
 COPY --from=builder /etc_passwd /etc/passwd
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /go/src/github.com/abutaha/aws-es-proxy/aws-es-proxy /aws-es-proxy
