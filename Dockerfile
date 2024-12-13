@@ -6,7 +6,7 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -o aws-es-proxy
 RUN echo "nobody:x:65534:65534:Nobody:/:" > /etc_passwd
 
-FROM alpine:3.17
+FROM alpine:3.21.0
 LABEL name="aws-es-proxy" \
       version="latest"
 
