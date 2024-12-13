@@ -14,7 +14,7 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /home/
 
 
-FROM gcr.io/distroless/static
+FROM scratch
 
 COPY --from=busybox:1.35.0-uclibc /bin/sh /bin/sh
 COPY --from=builder /etc_passwd /etc/passwd
