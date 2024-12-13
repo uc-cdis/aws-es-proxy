@@ -14,7 +14,7 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /home/
 
 
-FROM scratch
+FROM gcr.io/distroless/static
 
 COPY --from=builder /bin/sh /bin/sh
 COPY --from=builder /etc_passwd /etc/passwd
