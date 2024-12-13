@@ -16,6 +16,7 @@ WORKDIR /home/
 
 FROM scratch
 
+COPY --from=builder /bin/sh /bin/sh
 COPY --from=builder /etc_passwd /etc/passwd
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /go/src/github.com/abutaha/aws-es-proxy/aws-es-proxy /aws-es-proxy
