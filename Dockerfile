@@ -1,4 +1,4 @@
-FROM golang:1.20-alpine AS builder
+FROM golang:1.23-bookworm AS builder
 
 WORKDIR /go/src/github.com/abutaha/aws-es-proxy
 COPY . .
