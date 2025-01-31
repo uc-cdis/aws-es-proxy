@@ -12,4 +12,7 @@ require (
 require (
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	golang.org/x/sys v0.29.0 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+replace gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c => gopkg.in/yaml.v3 v3.0.1
